@@ -10,4 +10,9 @@ MC\ :sup:`2`
 
 MC\ :sup:`2` is a platform that enables users to securely but easily run analytics and machine learning on their confidential data in the cloud. Using secure enclaves, MC\ :sup:`2` allows users to run Spark jobs and train XGBoost models while keeping their data encrypted at all times. While providing significant additional security guarantees, MC\ :sup:`2` preserves the API exposed by Spark SQL and XGBoost.
 
+.. toctree::
+    :maxdepth: 2
+    :caption: Contents:
 
+    Opaque SQL <https://mc2-project.github.io/opaque/>
+    Secure XGBoost <https://mc2-project.github.io/secure-xgboost/>

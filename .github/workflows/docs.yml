@@ -22,9 +22,8 @@ jobs:
       - name: Upgrade Pip
         run: python -m pip install --upgrade pip setuptools wheel
    
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
-          cd main
           pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
 
       - name: Build docs

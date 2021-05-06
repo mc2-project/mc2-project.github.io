@@ -21,9 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.CI_BOT_PAT }}
           submodules: true
-          path: main
 
       - name: Set up Python 3.6
         uses: actions/setup-python@v2
@@ -33,65 +31,14 @@ jobs:
       - name: Upgrade Pip
         run: python -m pip install --upgrade pip setuptools wheel
    
-      - name: Install apt package dependencies
+      - name: Install dependencies
         run: |
-          # Install OpenEnclave 0.12.0
-          echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
-          wget -qO - https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo apt-key add -
-          echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | sudo tee /etc/apt/sources.list.d/llvm-toolchain-bionic-7.list
-          wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-          echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/msprod.list
-          wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-
-          sudo apt update
-          sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave=0.12.0 enchant
-
-          # CMake
-          wget https://github.com/Kitware/CMake/releases/download/v3.15.6/cmake-3.15.6-Linux-x86_64.sh
-
-          # Mbed TLS
-          sudo apt-get install -y libmbedtls-dev
-
-      - name: Build C++
-        run: | 
-          # Build C++ source
-          cd main
-          cd src
-          mkdir build
-          cd build
-          cmake ..
-          make -j4
-          cd ../..
-
-      - name: Install Python dependencies
-        run: |
-          cd main
-          pip install -r requirements.txt 
-          pip install furo numpydoc sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
-
-      - name: Install opaqueclient Python package
-        run: |
-          # Install the Python package
-          cd main/python-package
-          python setup.py install
-
-      - name: Checkout sequencefile Python package
-        uses: actions/checkout@master
-        with:
-            path: sequencefile
-            repository: opaque-systems/sequencefile
-            token: ${{ secrets.CI_BOT_PAT }}
-
-      - name: Install sequencefile Python package
-        run: cd sequencefile; python setup.py install
-        shell: bash
+          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
 
       - name: Build docs
         run: |
-          cd main/docs
           make html
 
-      - name: Run spellcheck
-        run : |
-            cd main/docs
-            sphinx-build -b spelling . _build
+      # - name: Run spellcheck
+      #   run : |
+      #       sphinx-build -b spelling . _build
