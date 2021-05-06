@@ -1,0 +1,56 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+
+      - name: Upgrade Pip
+        run: python -m pip install --upgrade pip setuptools wheel
+   
+      - name: Install Python dependencies
+        run: |
+          cd main
+          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
+
+      - name: Build docs
+        run: |
+          make html
+
+      - name: Clone gh-pages branch
+        uses: actions/checkout@v2
+        with: 
+          repository: mc2-project/mc2-project.github.io
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Commit documentation changes
+        run: |
+          cp -r _build/html/* gh-pages/
+          cd gh-pages
+          touch .nojekyll
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "${GITHUB_ACTOR}'s changes in ${GITHUB_SHA} triggered this build" -a || true
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
