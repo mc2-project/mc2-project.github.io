@@ -7,16 +7,17 @@
 MC\ :sup:`2`: A Platform for Secure Analytics and Machine Learning
 ******************************************************************
 
-Born out of research in the `UC Berkeley RISE Lab<https://rise.cs.berkeley.edu/>`_, MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
+Born out of research in the `UC Berkeley RISE Lab <https://rise.cs.berkeley.edu/>`_, MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
 
-MC\ :sup:`2`'s stack supports a single client interface called `MC\ :sup:`2` client<https://github.com/mc2-project/mc2-client>`_, as well as the following compute services:
+MC\ :sup:`2`'s stack supports a single client interface called `MC\ :sup:`2` client <https://github.com/mc2-project/mc2-client>`_, as well as the following compute services:
 
-- `Opaque SQL<https://github.com/mc2-project/opaque>`_: Encrypted data analytics on Spark SQL using hardware enclaves
-- `Secure XGBoost<https://github.com/mc2-project/secure-xgboost>`_: Collaborative XGBoost training and inference on encrypted data using hardware enclaves
-- `Federated XGBoost<https://github.com/mc2-project/federated-xgboost>`_: Collaborative XGBoost in the federated setting
+- `Opaque SQL <https://github.com/mc2-project/opaque>`_: Encrypted data analytics on Spark SQL using hardware enclaves
+- `Secure XGBoost <https://github.com/mc2-project/secure-xgboost>`_: Collaborative XGBoost training and inference on encrypted data using hardware enclaves
+- `Federated XGBoost <https://github.com/mc2-project/federated-xgboost>`_: Collaborative XGBoost in the federated setting
 
-.. image:: mc2_stack.pdf
+.. figure:: mc2_stack.pdf
    :scale: 50 %
+   Overview of the MC\ :sup:`2` stack
 
 What are secure enclaves?
 =========================
