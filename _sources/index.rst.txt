@@ -16,7 +16,8 @@ MC\ :sup:`2`'s stack supports a `single client interface <https://github.com/mc2
 - `Federated XGBoost <https://github.com/mc2-project/federated-xgboost>`_: Collaborative XGBoost in the federated setting
 
 .. figure:: mc2_stack.jpg
-   :scale: 50 %
+   :figwidth: 30 %
+   :align: center
            
    Overview of the MC\ :sup:`2` stack
 
@@ -34,9 +35,33 @@ How does MC\ :sup:`2` use enclaves?
 
 The MC\ :sup:`2` platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.
 
-The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secure data processing in a cloud. Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.
+The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secure data processing in a cloud.
 
+1. Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.
 
+   .. figure:: mc2_workflow/mc2_workflow.001.jpg
+      :figwidth: 30 %
+      :align: center
+
+2. Next, clients 
+
+   .. figure:: mc2_workflow/mc2_workflow.002.jpg
+      :figwidth: 30 %
+      :align: center
+
+3. Next, clients 
+
+   .. figure:: mc2_workflow/mc2_workflow.003.jpg
+      :figwidth: 30 %
+      :align: center
+
+4. Next, clients 
+
+   .. figure:: mc2_workflow/mc2_workflow.004.jpg
+      :figwidth: 30 %
+      :align: center
+
+              
 .. toctree::
     :maxdepth: 2
     :caption: Contents:

@@ -143,8 +143,8 @@
 <li><p><a class="reference external" href="https://github.com/mc2-project/secure-xgboost">Secure XGBoost</a>: Collaborative XGBoost training and inference on encrypted data using hardware enclaves</p></li>
 <li><p><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a>: Collaborative XGBoost in the federated setting</p></li>
 </ul>
-<figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="_images/mc2_stack.jpg"><img alt="_images/mc2_stack.jpg" src="_images/mc2_stack.jpg" style="width: 813.0px; height: 477.5px;"/></a>
+<figure class="align-center" id="id1" style="width: 30%">
+<img alt="_images/mc2_stack.jpg" src="_images/mc2_stack.jpg"/>
 <figcaption>
 <p><span class="caption-text">Overview of the MC<sup>2</sup> stack</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
@@ -158,7 +158,29 @@
 <section id="how-does-mc2-use-enclaves">
 <h2>How does MC<sup>2</sup> use enclaves?<a class="headerlink" href="#how-does-mc2-use-enclaves" title="Permalink to this headline">¶</a></h2>
 <p>The MC<sup>2</sup> platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
-<p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud. Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.</p>
+<p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud.</p>
+<ol class="arabic">
+<li><p>Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.</p>
+<figure class="align-center" style="width: 30%">
+<img alt="mc2_workflow/mc2_workflow.001.jpg" src="mc2_workflow/mc2_workflow.001.jpg"/>
+</figure>
+</li>
+<li><p>Next, clients</p>
+<figure class="align-center" style="width: 30%">
+<img alt="mc2_workflow/mc2_workflow.002.jpg" src="mc2_workflow/mc2_workflow.002.jpg"/>
+</figure>
+</li>
+<li><p>Next, clients</p>
+<figure class="align-center" style="width: 30%">
+<img alt="mc2_workflow/mc2_workflow.003.jpg" src="mc2_workflow/mc2_workflow.003.jpg"/>
+</figure>
+</li>
+<li><p>Next, clients</p>
+<figure class="align-center" style="width: 30%">
+<img alt="mc2_workflow/mc2_workflow.004.jpg" src="mc2_workflow/mc2_workflow.004.jpg"/>
+</figure>
+</li>
+</ol>
 <div class="toctree-wrapper compound">
 <p><span class="caption-text">Contents:</span></p>
 <ul>
