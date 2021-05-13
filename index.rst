@@ -15,8 +15,9 @@ MC\ :sup:`2`'s stack supports a `single client interface <https://github.com/mc2
 - `Secure XGBoost <https://github.com/mc2-project/secure-xgboost>`_: Collaborative XGBoost training and inference on encrypted data using hardware enclaves
 - `Federated XGBoost <https://github.com/mc2-project/federated-xgboost>`_: Collaborative XGBoost in the federated setting
 
-.. figure:: _images/mc2_stack.pdf
+.. figure:: mc2_stack.jpg
    :scale: 50 %
+           
    Overview of the MC\ :sup:`2` stack
 
 What are secure enclaves?
