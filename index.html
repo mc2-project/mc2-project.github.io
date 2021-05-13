@@ -155,28 +155,28 @@
 <p>Since the operating system is untrusted, enclaves provide a feature called <em>remote attestation,</em> which enables clients to cryptographically verify that an enclave in the cloud is running a specific version of the code. This allows remote clients to have confidence that the expected code will be executed on their data instead of a malicious piece of code.</p>
 <p>Examples of secure enclave technology include Intel SGX, ARM TrustZone, and AMD Memory Encryption. All major cloud providers support VMs with enclaves (see Microsoft Azure Confidential Computing, GCP Confidential Computing, and AWS Nitro enclaves).</p>
 </section>
-<section id="how-does-mc2-use-enclaves">
-<h2>How does MC<sup>2</sup> use enclaves?<a class="headerlink" href="#how-does-mc2-use-enclaves" title="Permalink to this headline">¶</a></h2>
+<section id="mc2-platform-s-workflow">
+<h2>MC<sup>2</sup> platform’s workflow<a class="headerlink" href="#mc2-platform-s-workflow" title="Permalink to this headline">¶</a></h2>
 <p>The MC<sup>2</sup> platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
-<p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud.</p>
+<p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud. Green indicates a trusted component, while read indicates an untrusted component that could be compromised by an adversary.</p>
 <ol class="arabic">
-<li><p>Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.</p>
-<figure class="align-center" style="width: 75%">
+<li><p>A user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage.</p>
+<figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow.001.jpeg" src="_images/mc2_workflow.001.jpeg"/>
 </figure>
 </li>
-<li><p>Next, clients</p>
-<figure class="align-center" style="width: 75%">
+<li><p>Next, the user executes remote attestation to load MC<sup>2</sup> compute service into enclaves and transfers their private keys to our service.</p>
+<figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow.002.jpeg" src="_images/mc2_workflow.002.jpeg"/>
 </figure>
 </li>
-<li><p>Next, clients</p>
-<figure class="align-center" style="width: 75%">
+<li><p>The user is ready to issue compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
+<figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow.003.jpeg" src="_images/mc2_workflow.003.jpeg"/>
 </figure>
 </li>
-<li><p>Next, clients</p>
-<figure class="align-center" style="width: 75%">
+<li><p>Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.</p>
+<figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow.004.jpeg" src="_images/mc2_workflow.004.jpeg"/>
 </figure>
 </li>
@@ -230,7 +230,7 @@
             <ul>
 <li><a class="reference internal" href="#">MC<sup>2</sup>: A Platform for Secure Analytics and Machine Learning</a><ul>
 <li><a class="reference internal" href="#what-are-secure-enclaves">What are secure enclaves?</a></li>
-<li><a class="reference internal" href="#how-does-mc2-use-enclaves">How does MC<sup>2</sup> use enclaves?</a></li>
+<li><a class="reference internal" href="#mc2-platform-s-workflow">MC<sup>2</sup> platform’s workflow</a></li>
 </ul>
 </li>
 </ul>
