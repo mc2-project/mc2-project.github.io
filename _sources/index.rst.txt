@@ -3,21 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+******************************************************************
 MC\ :sup:`2`: A Platform for Secure Analytics and Machine Learning
-===================================================================
+******************************************************************
 
-Born out of research in the [UC Berkeley RISE Lab](https://rise.cs.berkeley.edu/), MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
+Born out of research in the `UC Berkeley RISE Lab<https://rise.cs.berkeley.edu/>`_, MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
 
-MC\ :sup:`2`'s stack supports a single client interface called [MC\ :sup:`2` client](https://github.com/mc2-project/mc2-client), as well as the following compute services:
+MC\ :sup:`2`'s stack supports a single client interface called `MC\ :sup:`2` client<https://github.com/mc2-project/mc2-client>`_, as well as the following compute services:
 
-- [Opaque SQL](https://github.com/mc2-project/opaque): Encrypted data analytics on Spark SQL using hardware enclaves
-- [Secure XGBoost](https://github.com/mc2-project/secure-xgboost): Collaborative XGBoost training and inference on encrypted data using hardware enclaves
-- [Federated XGBoost](https://github.com/mc2-project/federated-xgboost): Collaborative XGBoost in the federated setting
+- `Opaque SQL<https://github.com/mc2-project/opaque>`_: Encrypted data analytics on Spark SQL using hardware enclaves
+- `Secure XGBoost<https://github.com/mc2-project/secure-xgboost>`_: Collaborative XGBoost training and inference on encrypted data using hardware enclaves
+- `Federated XGBoost<https://github.com/mc2-project/federated-xgboost>`_: Collaborative XGBoost in the federated setting
 
 .. image:: mc2_stack.pdf
-           :width: 600
+   :scale: 50 %
 
-### What are secure enclaves?
+What are secure enclaves?
+=========================
 
 In order to provide strong privacy guarantees for user data, MC\ :sup:`2` leverages secure enclaves, which are a recent advance in computer processor technology that enables the creation of a secure region of memory on an otherwise untrusted machine. Any data or software placed within the enclave is encrypted and isolated from the rest of the system. No other process on the same processor -- not even privileged software such as the OS or the hypervisor -- can access the encrypted enclave memory. 
 
@@ -25,7 +27,8 @@ Since the operating system is untrusted, enclaves provide a feature called *remo
 
 Examples of secure enclave technology include Intel SGX, ARM TrustZone, and AMD Memory Encryption. All major cloud providers support VMs with enclaves (see Microsoft Azure Confidential Computing, GCP Confidential Computing, and AWS Nitro enclaves).
 
-### How does MC\ :sup:`2` use enclaves?
+How does MC\ :sup:`2` use enclaves?
+===================================
 
 The MC\ :sup:`2` platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.
 

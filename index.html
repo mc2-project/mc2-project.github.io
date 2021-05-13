@@ -97,7 +97,7 @@
       <a href="#"><div class="brand">MC<sup>2</sup>  documentation</div></a>
     </div>
     <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -131,24 +131,27 @@
   <main class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
         <section id="mc2-a-platform-for-secure-analytics-and-machine-learning">
 <h1>MC<sup>2</sup>: A Platform for Secure Analytics and Machine Learning<a class="headerlink" href="#mc2-a-platform-for-secure-analytics-and-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>Born out of research in the [UC Berkeley RISE Lab](<a class="reference external" href="https://rise.cs.berkeley.edu/">https://rise.cs.berkeley.edu/</a>), MC<sup>2</sup> is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.</p>
-<p>MC<sup>2</sup>’s stack supports a single client interface called [MC<sup>2</sup> client](<a class="reference external" href="https://github.com/mc2-project/mc2-client">https://github.com/mc2-project/mc2-client</a>), as well as the following compute services:</p>
+<p>Born out of research in the <a href="#id1"><span class="problematic" id="id2">`UC Berkeley RISE Lab&lt;https://rise.cs.berkeley.edu/&gt;`_</span></a>, MC<sup>2</sup> is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.</p>
+<p>MC<sup>2</sup>’s stack supports a single client interface called <cite>MC:sup:`2</cite> client&lt;<a class="reference external" href="https://github.com/mc2-project/mc2-client">https://github.com/mc2-project/mc2-client</a>&gt;`_, as well as the following compute services:</p>
 <ul class="simple">
-<li><p>[Opaque SQL](<a class="reference external" href="https://github.com/mc2-project/opaque">https://github.com/mc2-project/opaque</a>): Encrypted data analytics on Spark SQL using hardware enclaves</p></li>
-<li><p>[Secure XGBoost](<a class="reference external" href="https://github.com/mc2-project/secure-xgboost">https://github.com/mc2-project/secure-xgboost</a>): Collaborative XGBoost training and inference on encrypted data using hardware enclaves</p></li>
-<li><p>[Federated XGBoost](<a class="reference external" href="https://github.com/mc2-project/federated-xgboost">https://github.com/mc2-project/federated-xgboost</a>): Collaborative XGBoost in the federated setting</p></li>
+<li><p><a href="#id3"><span class="problematic" id="id4">`Opaque SQL&lt;https://github.com/mc2-project/opaque&gt;`_</span></a>: Encrypted data analytics on Spark SQL using hardware enclaves</p></li>
+<li><p><a href="#id5"><span class="problematic" id="id6">`Secure XGBoost&lt;https://github.com/mc2-project/secure-xgboost&gt;`_</span></a>: Collaborative XGBoost training and inference on encrypted data using hardware enclaves</p></li>
+<li><p><a href="#id7"><span class="problematic" id="id8">`Federated XGBoost&lt;https://github.com/mc2-project/federated-xgboost&gt;`_</span></a>: Collaborative XGBoost in the federated setting</p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/mc2_stack.pdf"><img alt="_images/mc2_stack.pdf" src="_images/mc2_stack.pdf" style="width: 600px;"/></a>
-<p>### What are secure enclaves?</p>
+<a class="reference internal image-reference" href="_images/mc2_stack.pdf"><img alt="_images/mc2_stack.pdf" src="_images/mc2_stack.pdf"/></a>
+<section id="what-are-secure-enclaves">
+<h2>What are secure enclaves?<a class="headerlink" href="#what-are-secure-enclaves" title="Permalink to this headline">¶</a></h2>
 <p>In order to provide strong privacy guarantees for user data, MC<sup>2</sup> leverages secure enclaves, which are a recent advance in computer processor technology that enables the creation of a secure region of memory on an otherwise untrusted machine. Any data or software placed within the enclave is encrypted and isolated from the rest of the system. No other process on the same processor – not even privileged software such as the OS or the hypervisor – can access the encrypted enclave memory.</p>
 <p>Since the operating system is untrusted, enclaves provide a feature called <em>remote attestation,</em> which enables clients to cryptographically verify that an enclave in the cloud is running a specific version of the code. This allows remote clients to have confidence that the expected code will be executed on their data instead of a malicious piece of code.</p>
 <p>Examples of secure enclave technology include Intel SGX, ARM TrustZone, and AMD Memory Encryption. All major cloud providers support VMs with enclaves (see Microsoft Azure Confidential Computing, GCP Confidential Computing, and AWS Nitro enclaves).</p>
-<p>### How does MC<sup>2</sup> use enclaves?</p>
+</section>
+<section id="how-does-mc2-use-enclaves">
+<h2>How does MC<sup>2</sup> use enclaves?<a class="headerlink" href="#how-does-mc2-use-enclaves" title="Permalink to this headline">¶</a></h2>
 <p>The MC<sup>2</sup> platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
 <p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud. Clients first use our MC2 client software to encrypt and upload their data to untrusted cloud storage.</p>
 <div class="toctree-wrapper compound">
@@ -159,6 +162,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
 </ul>
 </div>
+</section>
 </section>
 
       </article>
@@ -185,8 +189,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">MC<sup>2</sup>: A Platform for Secure Analytics and Machine Learning</a><ul>
+<li><a class="reference internal" href="#what-are-secure-enclaves">What are secure enclaves?</a></li>
+<li><a class="reference internal" href="#how-does-mc2-use-enclaves">How does MC<sup>2</sup> use enclaves?</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
