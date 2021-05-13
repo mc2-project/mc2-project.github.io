@@ -17,6 +17,7 @@ MC\ :sup:`2`'s stack supports a `single client interface <https://github.com/mc2
 
 .. figure:: mc2_stack.jpg
    :scale: 50 %
+           
    Overview of the MC\ :sup:`2` stack
 
 What are secure enclaves?
