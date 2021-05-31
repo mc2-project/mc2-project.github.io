@@ -7,7 +7,7 @@
 MC\ :sup:`2`: A Platform for Secure Analytics and Machine Learning
 ******************************************************************
 
-Born out of research in the `UC Berkeley RISE Lab <https://rise.cs.berkeley.edu/>`_, MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC2, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC2 also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
+Born out of research in the `UC Berkeley RISE Lab <https://rise.cs.berkeley.edu/>`_, MC\ :sup:`2` is a platform for running secure analytics and machine learning on encrypted data. With MC\ :sup:`2`, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC\ :sup:`2` also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.
 
 MC\ :sup:`2`'s stack supports a `single client interface <https://github.com/mc2-project/mc2-client>`_, as well as the following compute services:
 
@@ -66,6 +66,7 @@ The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secur
     :maxdepth: 2
     :caption: Contents:
 
+    MC2 Client <https://mc2-project.github.io/mc2/>
     Opaque SQL <https://mc2-project.github.io/opaque-sql/>
     Secure XGBoost <https://mc2-project.github.io/secure-xgboost/>
     Federated XGBoost <https://github.com/mc2-project/federated-xgboost>
