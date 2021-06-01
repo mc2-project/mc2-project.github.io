@@ -39,17 +39,22 @@ The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secur
 
 1. Before any query can be exeucuted, the user must execute remote attestation to load MC\ :sup:`2` compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC\ :sup:`2` client.
 
-   .. figure:: mc2_workflow/mc2_workflow2.jpg
+   .. figure:: mc2_workflow/mc2_workflow1.jpg
       :figwidth: 85 %
       :align: center
 
 2. As part of the compute statep, the user first uses our MC\ :sup:`2` client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user's private key, and run the user-specified compute tasks.
 
-   .. figure:: mc2_workflow/mc2_workflow3.jpg
+   .. figure:: mc2_workflow/mc2_workflow2.jpg
       :figwidth: 85 %
       :align: center
 
 3. Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.
+
+   .. figure:: mc2_workflow/mc2_workflow3.jpg
+      :figwidth: 85 %
+      :align: center
+
 
 .. toctree::
     :maxdepth: 2
