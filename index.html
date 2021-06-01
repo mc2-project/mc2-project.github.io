@@ -163,15 +163,19 @@
 <ol class="arabic">
 <li><p>Before any query can be exeucuted, the user must execute remote attestation to load MC<sup>2</sup> compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC<sup>2</sup> client.</p>
 <figure class="align-center" style="width: 85%">
-<img alt="_images/mc2_workflow2.jpg" src="_images/mc2_workflow2.jpg"/>
+<img alt="_images/mc2_workflow1.jpg" src="_images/mc2_workflow1.jpg"/>
 </figure>
 </li>
 <li><p>As part of the compute statep, the user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
 <figure class="align-center" style="width: 85%">
+<img alt="_images/mc2_workflow2.jpg" src="_images/mc2_workflow2.jpg"/>
+</figure>
+</li>
+<li><p>Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.</p>
+<figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow3.jpg" src="_images/mc2_workflow3.jpg"/>
 </figure>
 </li>
-<li><p>Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.</p></li>
 </ol>
 <div class="toctree-wrapper compound">
 <p><span class="caption-text">Contents:</span></p>
