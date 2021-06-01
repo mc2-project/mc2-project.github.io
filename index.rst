@@ -37,36 +37,25 @@ The MC\ :sup:`2` platform builds upon the Open Enclave SDK, an open source SDK t
 
 The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secure data processing in a cloud. Green indicates a trusted component, while read indicates an untrusted component that could be compromised by an adversary.
 
-1. A user first uses our MC\ :sup:`2` client software to encrypt and upload their data to untrusted cloud storage.
+1. Before any query can be exeucuted, the user must execute remote attestation to load MC\ :sup:`2` compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC\ :sup:`2` client.
 
-   .. figure:: mc2_workflow/mc2_workflow.001.jpeg
+   .. figure:: mc2_workflow/mc2_workflow2.jpg
       :figwidth: 85 %
       :align: center
 
-2. Next, the user executes remote attestation to load MC\ :sup:`2` compute service into enclaves and transfers their private keys to our service.
+2. As part of the compute statep, the user first uses our MC\ :sup:`2` client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user's private key, and run the user-specified compute tasks.
 
-   .. figure:: mc2_workflow/mc2_workflow.002.jpeg
+   .. figure:: mc2_workflow/mc2_workflow3.jpg
       :figwidth: 85 %
       :align: center
 
-3. The user is ready to issue compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user's private key, and run the user-specified compute tasks.
+3. Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.
 
-   .. figure:: mc2_workflow/mc2_workflow.003.jpeg
-      :figwidth: 85 %
-      :align: center
-
-4. Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.
-
-   .. figure:: mc2_workflow/mc2_workflow.004.jpeg
-      :figwidth: 85 %
-      :align: center
-
-              
 .. toctree::
     :maxdepth: 2
     :caption: Contents:
 
-    MC2 Client <https://mc2-project.github.io/mc2/>
+    MC\ :sup:`2` Client <https://mc2-project.github.io/mc2/>
     Opaque SQL <https://mc2-project.github.io/opaque-sql/>
     Secure XGBoost <https://mc2-project.github.io/secure-xgboost/>
     Federated XGBoost <https://github.com/mc2-project/federated-xgboost>
