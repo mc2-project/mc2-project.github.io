@@ -60,7 +60,7 @@ The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secur
     :maxdepth: 2
     :caption: Contents:
 
-    MC\ :sup:`2` Client <https://mc2-project.github.io/mc2/>
+    MC2 Client <https://mc2-project.github.io/mc2/>
     Opaque SQL <https://mc2-project.github.io/opaque-sql/>
     Secure XGBoost <https://mc2-project.github.io/secure-xgboost/>
     Federated XGBoost <https://github.com/mc2-project/federated-xgboost>
