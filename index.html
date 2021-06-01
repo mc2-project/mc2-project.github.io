@@ -117,7 +117,7 @@
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
   <p><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC\ :sup:`2` Client</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
@@ -161,31 +161,22 @@
 <p>The MC<sup>2</sup> platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
 <p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud. Green indicates a trusted component, while read indicates an untrusted component that could be compromised by an adversary.</p>
 <ol class="arabic">
-<li><p>A user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage.</p>
+<li><p>Before any query can be exeucuted, the user must execute remote attestation to load MC<sup>2</sup> compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC<sup>2</sup> client.</p>
 <figure class="align-center" style="width: 85%">
-<img alt="_images/mc2_workflow.001.jpeg" src="_images/mc2_workflow.001.jpeg"/>
+<img alt="_images/mc2_workflow2.jpg" src="_images/mc2_workflow2.jpg"/>
 </figure>
 </li>
-<li><p>Next, the user executes remote attestation to load MC<sup>2</sup> compute service into enclaves and transfers their private keys to our service.</p>
+<li><p>As part of the compute statep, the user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
 <figure class="align-center" style="width: 85%">
-<img alt="_images/mc2_workflow.002.jpeg" src="_images/mc2_workflow.002.jpeg"/>
+<img alt="_images/mc2_workflow3.jpg" src="_images/mc2_workflow3.jpg"/>
 </figure>
 </li>
-<li><p>The user is ready to issue compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
-<figure class="align-center" style="width: 85%">
-<img alt="_images/mc2_workflow.003.jpeg" src="_images/mc2_workflow.003.jpeg"/>
-</figure>
-</li>
-<li><p>Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.</p>
-<figure class="align-center" style="width: 85%">
-<img alt="_images/mc2_workflow.004.jpeg" src="_images/mc2_workflow.004.jpeg"/>
-</figure>
-</li>
+<li><p>Finally, the result returned to the user in encrypted form, which can be decrypted locally by the user.</p></li>
 </ol>
 <div class="toctree-wrapper compound">
 <p><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC\ :sup:`2` Client</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
