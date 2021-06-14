@@ -69,12 +69,19 @@ html_theme_options = {
         "color-brand-content": "#00B0FF",
         "color-admonition-background": "orange",
     },
+    "sidebar_hide_name": True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# Path to logo
+html_logo = "images/logo.png"
+
+# Path to favicon
+html_favicon = "images/favicon.png"
 
 # Correctly spelled words to be ignored during spellcheck
 spelling_word_list_filename = "spelling_wordlist.txt"
