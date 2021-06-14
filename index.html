@@ -3,9 +3,9 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Documentation" href="documentation.html" />
 
-    <meta name="generator" content="sphinx-3.0.3, furo 2021.04.11.beta34"/>
+    <link rel="shortcut icon" href="_static/favicon.png"/><meta name="generator" content="sphinx-3.0.3, furo 2021.04.11.beta34"/>
         <title>Home - MC2 documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
     <link rel="stylesheet" href="_static/pygments.css">
@@ -105,22 +105,27 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="#">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">MC<sup>2</sup>  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html">
   <input class="sidebar-search" placeholder=Search name="q">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="documentation.html">Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/mc2">GitHub</a></li>
 </ul>
 
 </div>
@@ -135,8 +140,13 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <section id="mc2-a-platform-for-secure-analytics-and-machine-learning">
-<h1>MC<sup>2</sup>: A Platform for Secure Analytics and Machine Learning<a class="headerlink" href="#mc2-a-platform-for-secure-analytics-and-machine-learning" title="Permalink to this headline">¶</a></h1>
+        <figure class="align-center" style="width: 75%">
+<img alt="_images/logo.png" src="_images/logo.png"/>
+</figure>
+<section id="a-platform-for-secure-analytics-and-machine-learning">
+<h1>A Platform for Secure Analytics and Machine Learning<a class="headerlink" href="#a-platform-for-secure-analytics-and-machine-learning" title="Permalink to this headline">¶</a></h1>
+<section id="introduction-to-mc2">
+<h2>Introduction to MC<sup>2</sup><a class="headerlink" href="#introduction-to-mc2" title="Permalink to this headline">¶</a></h2>
 <p>Born out of research in the <a class="reference external" href="https://rise.cs.berkeley.edu/">UC Berkeley RISE Lab</a>, MC<sup>2</sup> is a platform for running secure analytics and machine learning on encrypted data. With MC<sup>2</sup>, organizations can safely upload their confidential data to the cloud in encrypted form and securely compute analytics and machine learning without exposing the unencrypted data to the cloud provider. MC<sup>2</sup> also enables secure collaboration among multiple organizations, where the data owners can use the platform to jointly analyze their collective data without revealing their individual data to each other.</p>
 <p>MC<sup>2</sup>’s stack supports a <a class="reference external" href="https://github.com/mc2-project/mc2-client">single client interface</a>, as well as the following compute services:</p>
 <ul class="simple">
@@ -150,6 +160,7 @@
 <p><span class="caption-text">Overview of the MC<sup>2</sup> stack</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="what-are-secure-enclaves">
 <h2>What are secure enclaves?<a class="headerlink" href="#what-are-secure-enclaves" title="Permalink to this headline">¶</a></h2>
 <p>In order to provide strong privacy guarantees for user data, MC<sup>2</sup> leverages secure enclaves, which are a recent advance in computer processor technology that enables the creation of a secure region of memory on an otherwise untrusted machine. Any data or software placed within the enclave is encrypted and isolated from the rest of the system. No other process on the same processor – not even privileged software such as the OS or the hypervisor – can access the encrypted enclave memory.</p>
@@ -158,7 +169,7 @@
 </section>
 <section id="mc2-platform-s-workflow">
 <h2>MC<sup>2</sup> platform’s workflow<a class="headerlink" href="#mc2-platform-s-workflow" title="Permalink to this headline">¶</a></h2>
-<p>The MC<sup>2</sup> platform builds upon the Open Enclave SDK, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
+<p>The MC<sup>2</sup> platform builds upon the <a class="reference external" href="https://openenclave.io/sdk/">Open Enclave SDK</a>, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.</p>
 <p>The diagrams below show a sample workflow of a user using MC<sup>2</sup> for secure data processing in a cloud. Green indicates a trusted component, while read indicates an untrusted component that could be compromised by an adversary.</p>
 <ol class="arabic">
 <li><p>Before any query can be exeucuted, the user must execute remote attestation to load MC<sup>2</sup> compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC<sup>2</sup> client.</p>
@@ -166,7 +177,7 @@
 <img alt="_images/mc2_workflow1.jpg" src="_images/mc2_workflow1.jpg"/>
 </figure>
 </li>
-<li><p>As part of the compute statep, the user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
+<li><p>As part of the compute step, the user first uses our MC<sup>2</sup> client software to encrypt and upload their data to untrusted cloud storage. Next, the user issues compute tasks to an untrusted orchestrator. The orchestrator will forward the requests to the enclave compute service, which will read the relevant encrypted data from the untrusted storage, decrypt it inside the enclave environment using the user’s private key, and run the user-specified compute tasks.</p>
 <figure class="align-center" style="width: 85%">
 <img alt="_images/mc2_workflow2.jpg" src="_images/mc2_workflow2.jpg"/>
 </figure>
@@ -177,13 +188,19 @@
 </figure>
 </li>
 </ol>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/mc2/">MC2 Client</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/opaque-sql/">Opaque SQL</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://mc2-project.github.io/secure-xgboost/">Secure XGBoost</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mc2-project/federated-xgboost">Federated XGBoost</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/mc2">GitHub</a></li>
 </ul>
 </div>
 </section>
@@ -193,7 +210,15 @@
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="documentation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Documentation</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
 
@@ -225,9 +250,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">MC<sup>2</sup>: A Platform for Secure Analytics and Machine Learning</a><ul>
+<li><a class="reference internal" href="#">A Platform for Secure Analytics and Machine Learning</a><ul>
+<li><a class="reference internal" href="#introduction-to-mc2">Introduction to MC<sup>2</sup></a></li>
 <li><a class="reference internal" href="#what-are-secure-enclaves">What are secure enclaves?</a></li>
 <li><a class="reference internal" href="#mc2-platform-s-workflow">MC<sup>2</sup> platform’s workflow</a></li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>
 </ul>
