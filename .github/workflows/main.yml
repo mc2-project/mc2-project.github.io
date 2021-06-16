@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+          path: main
 
       - name: Set up Python 3.6
         uses: actions/setup-python@v2
@@ -30,15 +31,25 @@ jobs:
 
       - name: Upgrade Pip
         run: python -m pip install --upgrade pip setuptools wheel
-   
+
       - name: Install dependencies
         run: |
-          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
+          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinx-multibuild sphinxcontrib-spelling
+
+      # Checkout other mc2 projects
+      - name: Checkout mc2 client
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/mc2
+            path: mc2
+
+      - name: Checkout Opaque SQL
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/opaque-sql
+            path: opaque-sql
 
       - name: Build docs
         run: |
-          make html
-
-      # - name: Run spellcheck
-      #   run : |
-      #       sphinx-build -b spelling . _build
+          sphinx-multibuild -i main -i mc2/ -i opaque-sql -s main/_build/tmp -o main/_build/html -b html
+   
