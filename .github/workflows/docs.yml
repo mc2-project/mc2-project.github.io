@@ -5,6 +5,10 @@ on:
     branches:    
       - master
 
+  pull_request:
+      branches:
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -24,11 +28,24 @@ jobs:
    
       - name: Install dependencies
         run: |
-          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
+          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinx-multibuild sphinxcontrib-spelling
+
+      # Checkout other mc2 projects
+      - name: Checkout mc2 client
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/mc2
+            path: ../mc2
+
+      - name: Checkout Opaque SQL
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/opaque-sql
+            path: ../opaque-sql
 
       - name: Build docs
         run: |
-          make html
+          sphinx-multibuild -i . -i ../mc2/ -i ../opaque-sql -s ./_build/tmp -o ./_build/html -b html
 
       - name: Clone gh-pages branch
         uses: actions/checkout@v2

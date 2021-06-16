@@ -41,7 +41,6 @@ extensions = [
     "sphinxarg.ext",
     "sphinx_copybutton",
     "sphinxcontrib.spelling",
-    "sphinx.ext.intersphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -89,7 +88,3 @@ spelling_word_list_filename = "spelling_wordlist.txt"
 
 # Emit misspelling as Sphinx warning
 spelling_warning = True
-
-intersphinx_mapping = {
-    "client": ("https://mc2-project.github.io/mc2/", None),
-}
