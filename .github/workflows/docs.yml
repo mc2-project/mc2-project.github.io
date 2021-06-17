@@ -6,7 +6,9 @@ on:
       - master
 
   repository_dispatch:
-    types: [client-docs-dispatch]
+    types: 
+      - client-docs-dispatch
+      - opaque-sql-docs-dispatch
 
 jobs:
   build:
