@@ -5,6 +5,13 @@ on:
     branches:    
       - master
 
+  pull_request:
+      branches:
+      - master
+
+  repository_dispatch:
+    types: [client-docs-dispatch]
+
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -13,6 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+          path: main
 
       - name: Set up Python 3.6
         uses: actions/setup-python@v2
@@ -24,11 +32,75 @@ jobs:
    
       - name: Install dependencies
         run: |
-          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinxcontrib-spelling
+          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinx-multibuild sphinxcontrib-spelling
+
+      - name: Checkout mc2 client
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/mc2
+            path: mc2
+
+      - name: Install mc2 client apt package dependencies
+        run: |
+          # Install OpenEnclave 0.12.0
+          echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
+          wget -qO - https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo apt-key add -
+          echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | sudo tee /etc/apt/sources.list.d/llvm-toolchain-bionic-7.list
+          wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+          echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/msprod.list
+          wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+          sudo apt update
+          sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave=0.12.0 enchant
+
+          # CMake
+          wget https://github.com/Kitware/CMake/releases/download/v3.15.6/cmake-3.15.6-Linux-x86_64.sh
+
+          # Mbed TLS
+          sudo apt-get install -y libmbedtls-dev
+
+      - name: Build mc2 client C++
+        run: | 
+          # Build C++ source
+          cd mc2
+          cd src
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+          cd ../..
+
+      - name: Install Python dependencies
+        run: |
+          cd mc2
+          pip install -r requirements.txt 
+
+      - name: Install mc2client Python package
+        run: |
+          # Install the Python package
+          cd mc2/python-package
+          python setup.py install
+
+      - name: Checkout sequencefile Python package
+        uses: actions/checkout@master
+        with:
+            path: sequencefile
+            repository: opaque-systems/sequencefile
+
+      - name: Install sequencefile Python package
+        run: cd sequencefile; python setup.py install
+        shell: bash
+
+      - name: Checkout Opaque SQL
+        uses: actions/checkout@v2
+        with:
+            repository: mc2-project/opaque-sql
+            path: opaque-sql
 
       - name: Build docs
         run: |
-          make html
+          cd main
+          sphinx-multibuild -i . -i ../mc2/ -i ../opaque-sql -s _build/tmp -o _build/html -b html
 
       - name: Clone gh-pages branch
         uses: actions/checkout@v2
@@ -39,7 +111,7 @@ jobs:
 
       - name: Commit documentation changes
         run: |
-          cp -r _build/html/* gh-pages/
+          cp -r main/_build/html/* gh-pages/
           cd gh-pages
           touch .nojekyll
           git config --local user.email "action@github.com"
