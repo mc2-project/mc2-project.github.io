@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Installation" href="install.html" /><link rel="prev" title="Documentation" href="../documentation.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.png"/><meta name="generator" content="sphinx-3.0.3, furo 2021.04.11.beta34"/>
+        <title>Welcome to MC2 Client’s documentation! - MC2 documentation</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #00B0FF;
+  --color-brand-content: #00B0FF;
+  --color-admonition-background: orange;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #00B0FF;
+  --color-brand-content: #00B0FF;
+  --color-admonition-background: orange;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">MC<sup>2</sup>  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../documentation.html">Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">MC2 Client</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opaquesql_usage.html">Usage with Opaque SQL</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="config/index.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="config/config.html">Global Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="config/azure.html">Azure Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="python/index.html">Python Interface</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="python/usage.html">Python Package Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python/api.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="cli/index.html">CLI Interface</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="cli/usage.html">CLI Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cli/api.html">CLI Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../opaque-sql-docs/src/index.html">Opaque SQL</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/install/install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/usage/client.html">Query submission via the MC<sup>2</sup> Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/usage/usage.html">Query submission via the Spark Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/usage/functionality.html">Supported functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/benchmarking/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opaque-sql-docs/src/contributing/contributing.html">Contributing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/mc2">GitHub</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <section id="welcome-to-mc2-client-s-documentation">
+<h1>Welcome to MC<sup>2</sup> Client’s documentation!<a class="headerlink" href="#welcome-to-mc2-client-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>MC<sup>2</sup> Client is a local trusted client that enables users to securely interface with the MC<sup>2</sup> ecosystem. In particular, MC<sup>2</sup> Client allows users to initialize their identities, launch MC<sup>2</sup>-loaded VMs and other resources on Azure Confidential Computing, start and stop MC<sup>2</sup> compute services (Opaque SQL and Secure XGBoost), transfer their encrypted sensitive data to the cloud for processing, and remotely run secure computation on their data.</p>
+<p>MC<sup>2</sup> Client provides two interfaces, a <a class="reference internal" href="python/usage.html"><span class="doc">Python interface</span></a> and a <a class="reference internal" href="cli/usage.html"><span class="doc">command line interface</span></a>. Both rely on a <a class="reference internal" href="config/config.html"><span class="doc">configuration file</span></a> to configure MC<sup>2</sup> Client; the command line interface is simpler but less flexible, while the Python interface gives users finer grained control over what they want to do.</p>
+<p>While MC<sup>2</sup> currently offers various compute services, the client is currently only compatible with Opaque SQL. We are currently in the midst of updating Secure XGBoost to be compatible with the client.</p>
+<div class="toctree-wrapper compound">
+<p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-with-docker-for-a-local-deployment">Building with Docker for a local deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-from-source">Building from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#azure-login">Azure Login</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#docker-quickstart">Docker Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#azure-quickstart">Azure Quickstart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opaquesql_usage.html">Usage with Opaque SQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opaquesql_usage.html#start">Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opaquesql_usage.html#upload">Upload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opaquesql_usage.html#run">Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opaquesql_usage.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opaquesql_usage.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config/config.html">Global Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/azure.html">Azure Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python/index.html">Python Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python/usage.html">Python Package Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python/api.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli/usage.html">CLI Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli/api.html">CLI Reference</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="install.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Installation</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../documentation.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Documentation</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, MC2 Contributors
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/client-docs/index.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

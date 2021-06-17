@@ -1,0 +1,562 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Benchmarking" href="../benchmarking/benchmarking.html" /><link rel="prev" title="Query submission via the Spark Driver" href="usage.html" />
+
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-3.0.3, furo 2021.04.11.beta34"/>
+        <title>Supported functionalities - MC2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #00B0FF;
+  --color-brand-content: #00B0FF;
+  --color-admonition-background: orange;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #00B0FF;
+  --color-brand-content: #00B0FF;
+  --color-admonition-background: orange;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">MC<sup>2</sup>  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../../documentation.html">Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../client-docs/index.html">MC2 Client</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../client-docs/install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../client-docs/quickstart.html">Quickstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../client-docs/opaquesql_usage.html">Usage with Opaque SQL</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../client-docs/config/index.html">Configuration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/config/config.html">Global Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/config/azure.html">Azure Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../client-docs/python/index.html">Python Interface</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/python/usage.html">Python Package Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/python/api.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../client-docs/cli/index.html">CLI Interface</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/cli/usage.html">CLI Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../client-docs/cli/api.html">CLI Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">Opaque SQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../install/install.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html">Query submission via the MC<sup>2</sup> Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html">Query submission via the Spark Driver</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Supported functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarking/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing/contributing.html">Contributing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/mc2-project/mc2">GitHub</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <section id="supported-functionalities">
+<span id="functionalities"></span><h1>Supported functionalities<a class="headerlink" href="#supported-functionalities" title="Permalink to this headline">¶</a></h1>
+<p>This section lists Opaque’s supported functionalities, which is a subset of that of Spark SQL. Note that the syntax for these functionalities is the same as Spark SQL – Opaque simply replaces the execution to work with encrypted data.</p>
+<section id="sql-interface">
+<h2>SQL interface<a class="headerlink" href="#sql-interface" title="Permalink to this headline">¶</a></h2>
+<section id="data-types">
+<h3>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<p>Out of the existing <a class="reference external" href="https://spark.apache.org/docs/latest/sql-ref-datatypes.html">Spark SQL types</a>, Opaque supports</p>
+<ul class="simple">
+<li><p>All numeric types. <code class="docutils literal notranslate"><span class="pre">DecimalType</span></code> is supported via conversion into <code class="docutils literal notranslate"><span class="pre">FloatType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StringType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BinaryType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BooleanType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimestampTime</span></code>, <code class="docutils literal notranslate"><span class="pre">DateType</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ArrayType</span></code>, <code class="docutils literal notranslate"><span class="pre">MapType</span></code></p></li>
+</ul>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>We currently support a subset of the Spark SQL functions, including both scalar and aggregate-like functions.</p>
+<ul class="simple">
+<li><p>Scalar functions: <code class="docutils literal notranslate"><span class="pre">case</span></code>, <code class="docutils literal notranslate"><span class="pre">cast</span></code>, <code class="docutils literal notranslate"><span class="pre">concat</span></code>, <code class="docutils literal notranslate"><span class="pre">contains</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">like</span></code>, <code class="docutils literal notranslate"><span class="pre">substring</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code></p></li>
+<li><p>Aggregate functions: <code class="docutils literal notranslate"><span class="pre">average</span></code>, <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">first</span></code>, <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code></p></li>
+</ul>
+<p>UDFs are not supported directly, but one can <a class="reference internal" href="#udfs"><span class="std std-ref">extend Opaque with additional functions</span></a> by writing it in C++.</p>
+</section>
+<section id="operators">
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<p>Opaque supports the core SQL operators:</p>
+<ul class="simple">
+<li><p>Projection (e.g., <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statements)</p></li>
+<li><p>Filter</p></li>
+<li><p>Global aggregation and grouping aggregation</p></li>
+<li><p>Order by, sort by</p></li>
+<li><p>All join types except: cross join, full outer join, existence join</p></li>
+<li><p>Limit</p></li>
+</ul>
+</section>
+</section>
+<section id="dataframe-interface">
+<h2>DataFrame interface<a class="headerlink" href="#dataframe-interface" title="Permalink to this headline">¶</a></h2>
+<p>Because Opaque SQL only replaces physical operators to work with encrypted data, the DataFrame interface is exactly the same as Spark’s both for <a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html">Scala</a> and <a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.sql.DataFrame.html?highlight=dataframe#pyspark.sql.DataFrame">Python</a>. Opaque SQL is still a work in progress, so not all of these functionalities are currently implemented. See below for a complete list in Scala.</p>
+<section id="supported-operations">
+<h3>Supported operations<a class="headerlink" href="#supported-operations" title="Permalink to this headline">¶</a></h3>
+<section id="actions">
+<h4>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#collect():Array[T]">collect(): Array[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#collectAsList():java.util.List[T]">collectAsList(): List[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#count():Long">count(): Long</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#first():T">first(): T</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#foreach(func:org.apache.spark.api.java.function.ForeachFunction[T]):Unit">foreach(func: ForeachFunction[T]): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#foreach(f:T=%3EUnit):Unit">foreach(f: T =&gt; Unit): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#foreachPartition(func:org.apache.spark.api.java.function.ForeachPartitionFunction[T]):Unit">foreachPartition(func: ForeachPartitionFunction[T]): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#foreachPartition(f:Iterator[T]=%3EUnit):Unit">foreachPartition(f: Iterator[T] =&gt; Unit): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#head():T">head(): T</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#head(n:Int):Array[T]">head(n: Int): Array[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show(numRows:Int,truncate:Int,vertical:Boolean):Unit">show(numRows: Int, truncate: Int, vertical: Boolean): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show(numRows:Int,truncate:Int):Unit">show(numRows: Int, truncate: Int): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show(numRows:Int,truncate:Boolean):Unit">show(numRows: Int, truncate: Boolean): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show(truncate:Boolean):Unit">show(truncate: Boolean): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show():Unit">show(): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#show(numRows:Int):Unit">show(numRows: Int): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#take(n:Int):Array[T]">take(n: Int): Array[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#takeAsList(n:Int):java.util.List[T]">takeAsList(n: Int): List[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toLocalIterator():java.util.Iterator[T]">toLocalIterator(): Iterator[T]</a></p></li>
+</ul>
+</section>
+<section id="basic-dataset-functions">
+<h4>Basic Dataset functions<a class="headerlink" href="#basic-dataset-functions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#cache():Dataset.this.type">cache(): Dataset.this.type</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#columns:Array[String]">columns: Array[String]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#createGlobalTempView(viewName:String):Unit">createGlobalTempView(viewName: String): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#createOrReplaceGlobalTempView(viewName:String):Unit">createOrReplaceGlobalTempView(viewName: String): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#createOrReplaceTempView(viewName:String):Unit">createOrReplaceTempView(viewName: String): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#createTempView(viewName:String):Unit">createTempView(viewName: String): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#dtypes:Array[(String,String)]">dtypes: Array[(String, String)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#explain():Unit">explain(): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#explain(extended:Boolean):Unit">explain(extended: Boolean): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#explain(mode:String):Unit">explain(mode: String): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#hint(name:String,parameters:Any*):org.apache.spark.sql.Dataset[T]">hint(name: String, parameters: Any*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#inputFiles:Array[String]">inputFiles: Array[String]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#isEmpty:Boolean">isEmpty: Boolean</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#isLocal:Boolean">isLocal: Boolean</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#javaRDD:org.apache.spark.api.java.JavaRDD[T]">javaRDD: JavaRDD[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#localCheckpoint(eager:Boolean):org.apache.spark.sql.Dataset[T]">localCheckpoint(eager: Boolean): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#localCheckpoint():org.apache.spark.sql.Dataset[T]">localCheckpoint(): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#printSchema(level:Int):Unit">printSchema(level: Int): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#printSchema():Unit">printSchema(): Unit</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#rdd:org.apache.spark.rdd.RDD[T]">rdd: org.apache.spark.rdd.RDD[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#schema:org.apache.spark.sql.types.StructType">schema: types.StructType</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#storageLevel:org.apache.spark.storage.StorageLevel">storageLevel: org.apache.spark.storage.StorageLevel</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toDF(colNames:String*):org.apache.spark.sql.DataFrame">toDF(colNames: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toDF():org.apache.spark.sql.DataFrame">toDF(): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toJavaRDD:org.apache.spark.api.java.JavaRDD[T]">toJavaRDD: JavaRDD[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#unpersist():Dataset.this.type">unpersist(): Dataset.this.type</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#unpersist(blocking:Boolean):Dataset.this.type">unpersist(blocking: Boolean): Dataset.this.type</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#write:org.apache.spark.sql.DataFrameWriter[T]">write: DataFrameWriter[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#writeStream:org.apache.spark.sql.streaming.DataStreamWriter[T]">writeStream: streaming.DataStreamWriter[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#writeTo(table:String):org.apache.spark.sql.DataFrameWriterV2[T]">writeTo(table: String): DataFrameWriterV2[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#registerTempTable(tableName:String):Unit">registerTempTable(tableName: String): Unit</a></p></li>
+</ul>
+</section>
+<section id="streaming">
+<h4>Streaming<a class="headerlink" href="#streaming" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#isStreaming:Boolean">isStreaming: Boolean</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#withWatermark(eventTime:String,delayThreshold:String):org.apache.spark.sql.Dataset[T]">withWatermark(eventTime: String, delayThreshold: String): Dataset[T]</a></p></li>
+</ul>
+</section>
+<section id="typed-transformations">
+<h4>Typed transformations<a class="headerlink" href="#typed-transformations" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#alias(alias:Symbol):org.apache.spark.sql.Dataset[T]">alias(alias: Symbol): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#alias(alias:String):org.apache.spark.sql.Dataset[T]">alias(alias: String): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#as(alias:Symbol):org.apache.spark.sql.Dataset[T]">as(alias: Symbol): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#as(alias:String):org.apache.spark.sql.Dataset[T]">as(alias: String): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#coalesce(numPartitions:Int):org.apache.spark.sql.Dataset[T]">coalesce(numPartitions: Int): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#distinct():org.apache.spark.sql.Dataset[T]">distinct(): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#dropDuplicates(col1:String,cols:String*):org.apache.spark.sql.Dataset[T]">dropDuplicates(col1: String, cols: String*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#dropDuplicates(colNames:Array[String]):org.apache.spark.sql.Dataset[T]">dropDuplicates(colNames: Array[String]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#dropDuplicates(colNames:Seq[String]):org.apache.spark.sql.Dataset[T]">dropDuplicates(colNames: Seq[String]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#dropDuplicates():org.apache.spark.sql.Dataset[T]">dropDuplicates(): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#filter(func:org.apache.spark.api.java.function.FilterFunction[T]):org.apache.spark.sql.Dataset[T]">filter(func: FilterFunction[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#filter(func:T=%3EBoolean):org.apache.spark.sql.Dataset[T]">filter(func: T =&gt; Boolean): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#filter(conditionExpr:String):org.apache.spark.sql.Dataset[T]">filter(conditionExpr: String): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#filter(condition:org.apache.spark.sql.Column):org.apache.spark.sql.Dataset[T]">filter(condition: Column): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#flatMap[U](f:org.apache.spark.api.java.function.FlatMapFunction[T,U],encoder:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">flatMap[U](f: FlatMapFunction[T, U], encoder: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#flatMap[U](func:T=%3ETraversableOnce[U])(implicitevidence$8:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">flatMap[U](func: T =&gt; TraversableOnce[U])(implicitevidence: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#groupByKey[K](func:org.apache.spark.api.java.function.MapFunction[T,K],encoder:org.apache.spark.sql.Encoder[K]):org.apache.spark.sql.KeyValueGroupedDataset[K,T]">groupByKey[K](func: MapFunction[T, K], encoder: Encoder[K]): KeyValueGroupedDataset[K, T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#groupByKey[K](func:T=%3EK)(implicitevidence$3:org.apache.spark.sql.Encoder[K]):org.apache.spark.sql.KeyValueGroupedDataset[K,T]">groupByKey[K](func: T =&gt; K)(implicitevidence: Encoder[K]): KeyValueGroupedDataset[K, T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#joinWith[U](other:org.apache.spark.sql.Dataset[U],condition:org.apache.spark.sql.Column):org.apache.spark.sql.Dataset[(T,U)]">joinWith[U](other: Dataset[U], condition: Column): Dataset[(T, U)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#joinWith[U](other:org.apache.spark.sql.Dataset[U],condition:org.apache.spark.sql.Column,joinType:String):org.apache.spark.sql.Dataset[(T,U)]">joinWith[U](other: Dataset[U], condition: Column, joinType: String): Dataset[(T, U)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#limit(n:Int):org.apache.spark.sql.Dataset[T]">limit(n: Int): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#map[U](func:org.apache.spark.api.java.function.MapFunction[T,U],encoder:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">map[U](func: MapFunction[T, U], encoder: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#map[U](func:T=%3EU)(implicitevidence$6:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">map[U](func: T =&gt; U)(implicitevidence: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#mapPartitions[U](f:org.apache.spark.api.java.function.MapPartitionsFunction[T,U],encoder:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">mapPartitions[U](f: MapPartitionsFunction[T, U], encoder: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#mapPartitions[U](func:Iterator[T]=%3EIterator[U])(implicitevidence$7:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">mapPartitions[U](func: Iterator[T] =&gt; Iterator[U])(implicitevidence: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#orderBy(sortExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">orderBy(sortExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#orderBy(sortCol:String,sortCols:String*):org.apache.spark.sql.Dataset[T]">orderBy(sortCol: String, sortCols: String*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#randomSplit(weights:Array[Double]):Array[org.apache.spark.sql.Dataset[T]]">randomSplit(weights: Array[Double]): Array[Dataset[T]]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#randomSplit(weights:Array[Double],seed:Long):Array[org.apache.spark.sql.Dataset[T]]">randomSplit(weights: Array[Double], seed: Long): Array[Dataset[T]]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#randomSplitAsList(weights:Array[Double],seed:Long):java.util.List[org.apache.spark.sql.Dataset[T]]">randomSplitAsList(weights: Array[Double], seed: Long): List[Dataset[T]]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#repartition(partitionExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">repartition(partitionExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#repartition(numPartitions:Int,partitionExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">repartition(numPartitions: Int, partitionExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#repartition(numPartitions:Int):org.apache.spark.sql.Dataset[T]">repartition(numPartitions: Int): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#repartitionByRange(partitionExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">repartitionByRange(partitionExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#repartitionByRange(numPartitions:Int,partitionExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">repartitionByRange(numPartitions: Int, partitionExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select[U1,U2,U3,U4,U5](c1:org.apache.spark.sql.TypedColumn[T,U1],c2:org.apache.spark.sql.TypedColumn[T,U2],c3:org.apache.spark.sql.TypedColumn[T,U3],c4:org.apache.spark.sql.TypedColumn[T,U4],c5:org.apache.spark.sql.TypedColumn[T,U5]):org.apache.spark.sql.Dataset[(U1,U2,U3,U4,U5)]">select[U1, U2, U3, U4, U5](c1: TypedColumn[T, U1], c2: TypedColumn[T, U2], c3: TypedColumn[T, U3], c4: TypedColumn[T, U4], c5: TypedColumn[T, U5]): Dataset[(U1, U2, U3, U4, U5)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select[U1,U2,U3,U4](c1:org.apache.spark.sql.TypedColumn[T,U1],c2:org.apache.spark.sql.TypedColumn[T,U2],c3:org.apache.spark.sql.TypedColumn[T,U3],c4:org.apache.spark.sql.TypedColumn[T,U4]):org.apache.spark.sql.Dataset[(U1,U2,U3,U4)]">select[U1, U2, U3, U4](c1: TypedColumn[T, U1], c2: TypedColumn[T, U2], c3: TypedColumn[T, U3], c4: TypedColumn[T, U4]): Dataset[(U1, U2, U3, U4)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select[U1,U2,U3](c1:org.apache.spark.sql.TypedColumn[T,U1],c2:org.apache.spark.sql.TypedColumn[T,U2],c3:org.apache.spark.sql.TypedColumn[T,U3]):org.apache.spark.sql.Dataset[(U1,U2,U3)]">select[U1, U2, U3](c1: TypedColumn[T, U1], c2: TypedColumn[T, U2], c3: TypedColumn[T, U3]): Dataset[(U1, U2, U3)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select[U1,U2](c1:org.apache.spark.sql.TypedColumn[T,U1],c2:org.apache.spark.sql.TypedColumn[T,U2]):org.apache.spark.sql.Dataset[(U1,U2)]">select[U1, U2](c1: TypedColumn[T, U1], c2: TypedColumn[T, U2]): Dataset[(U1, U2)]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select[U1](c1:org.apache.spark.sql.TypedColumn[T,U1]):org.apache.spark.sql.Dataset[U1]">select[U1](c1: TypedColumn[T, U1]): Dataset[U1]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sort(sortExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">sort(sortExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sort(sortCol:String,sortCols:String*):org.apache.spark.sql.Dataset[T]">sort(sortCol: String, sortCols: String*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sortWithinPartitions(sortExprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">sortWithinPartitions(sortExprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sortWithinPartitions(sortCol:String,sortCols:String*):org.apache.spark.sql.Dataset[T]">sortWithinPartitions(sortCol: String, sortCols: String*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#transform[U](t:org.apache.spark.sql.Dataset[T]=%3Eorg.apache.spark.sql.Dataset[U]):org.apache.spark.sql.Dataset[U]">transform[U](t: Dataset[T] =&gt; Dataset[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#union(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">union(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#unionAll(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">unionAll(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#unionByName(other:org.apache.spark.sql.Dataset[T],allowMissingColumns:Boolean):org.apache.spark.sql.Dataset[T]">unionByName(other: Dataset[T], allowMissingColumns: Boolean): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#unionByName(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">unionByName(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#where(conditionExpr:String):org.apache.spark.sql.Dataset[T]">where(conditionExpr: String): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#where(condition:org.apache.spark.sql.Column):org.apache.spark.sql.Dataset[T]">where(condition: Column): Dataset[T]</a></p></li>
+</ul>
+</section>
+<section id="untyped-transformations">
+<h4>Untyped transformations<a class="headerlink" href="#untyped-transformations" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#agg(expr:org.apache.spark.sql.Column,exprs:org.apache.spark.sql.Column*):org.apache.spark.sql.DataFrame">agg(expr: Column, exprs: Column*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#agg(exprs:Map[String,String]):org.apache.spark.sql.DataFrame">agg(exprs: Map[String, String]): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#agg(aggExpr:(String,String),aggExprs:(String,String)*):org.apache.spark.sql.DataFrame">agg(aggExpr: (String, String), aggExprs: (String, String)*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#apply(colName:String):org.apache.spark.sql.Column">apply(colName: String): Column</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#col(colName:String):org.apache.spark.sql.Column">col(colName: String): Column</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#colRegex(colName:String):org.apache.spark.sql.Column">colRegex(colName: String): Column</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#drop(col:org.apache.spark.sql.Column):org.apache.spark.sql.DataFrame">drop(col: Column): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#drop(colNames:String*):org.apache.spark.sql.DataFrame">drop(colNames: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#drop(colName:String):org.apache.spark.sql.DataFrame">drop(colName: String): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#groupBy(col1:String,cols:String*):org.apache.spark.sql.RelationalGroupedDataset">groupBy(col1: String, cols: String*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#groupBy(cols:org.apache.spark.sql.Column*):org.apache.spark.sql.RelationalGroupedDataset">groupBy(cols: Column*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#hashCode():Int">hashCode(): Int</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_],joinExprs:org.apache.spark.sql.Column,joinType:String):org.apache.spark.sql.DataFrame">join(right: Dataset[_], joinExprs: Column, joinType: String): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_],joinExprs:org.apache.spark.sql.Column):org.apache.spark.sql.DataFrame">join(right: Dataset[_], joinExprs: Column): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_],usingColumns:Seq[String],joinType:String):org.apache.spark.sql.DataFrame">join(right: Dataset[_], usingColumns: Seq[String], joinType: String): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_],usingColumns:Seq[String]):org.apache.spark.sql.DataFrame">join(right: Dataset[_], usingColumns: Seq[String]): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_],usingColumn:String):org.apache.spark.sql.DataFrame">join(right: Dataset[_], usingColumn: String): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#join(right:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame">join(right: Dataset[_]): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#na:org.apache.spark.sql.DataFrameNaFunctions">na: DataFrameNaFunctions</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select(col:String,cols:String*):org.apache.spark.sql.DataFrame">select(col: String, cols: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#select(cols:org.apache.spark.sql.Column*):org.apache.spark.sql.DataFrame">select(cols: Column*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#selectExpr(exprs:String*):org.apache.spark.sql.DataFrame">selectExpr(exprs: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#stat:org.apache.spark.sql.DataFrameStatFunctions">stat: DataFrameStatFunctions</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#withColumn(colName:String,col:org.apache.spark.sql.Column):org.apache.spark.sql.DataFrame">withColumn(colName: String, col: Column): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#withColumnRenamed(existingName:String,newName:String):org.apache.spark.sql.DataFrame">withColumnRenamed(existingName: String, newName: String): DataFrame</a></p></li>
+</ul>
+</section>
+<section id="ungrouped">
+<h4>Ungrouped<a class="headerlink" href="#ungrouped" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#encoder:org.apache.spark.sql.Encoder[T]">encoder: Encoder[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#queryExecution:org.apache.spark.sql.execution.QueryExecution">queryExecution: execution.QueryExecution</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sameSemantics(other:org.apache.spark.sql.Dataset[T]):Boolean">sameSemantics(other: Dataset[T]): Boolean</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#semanticHash():Int">semanticHash(): Int</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sparkSession:org.apache.spark.sql.SparkSession">sparkSession: SparkSession</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sqlContext:org.apache.spark.sql.SQLContext">sqlContext: SQLContext</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toJSON:org.apache.spark.sql.Dataset[String]">toJSON: Dataset[String]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#toString():String">toString(): String</a></p></li>
+</ul>
+</section>
+</section>
+<section id="unsupported-operations">
+<h3>Unsupported operations<a class="headerlink" href="#unsupported-operations" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h4>Actions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#describe(cols:String*):org.apache.spark.sql.DataFrame">describe(cols: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#reduce(func:org.apache.spark.api.java.function.ReduceFunction[T]):T">reduce(func: ReduceFunction[T]): T</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#reduce(func:(T,T)=%3ET):T">reduce(func: (T, T) =&gt; T): T</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#summary(statistics:String*):org.apache.spark.sql.DataFrame">summary(statistics: String*): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#tail(n:Int):Array[T]">tail(n: Int): Array[T]</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Basic Dataset Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#as[U](implicitevidence:org.apache.spark.sql.Encoder[U]):org.apache.spark.sql.Dataset[U]">as[U](implicitevidence: Encoder[U]): Dataset[U]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#checkpoint(eager:Boolean):org.apache.spark.sql.Dataset[T]">checkpoint(eager: Boolean): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#checkpoint():org.apache.spark.sql.Dataset[T]">checkpoint(): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#persist(newLevel:org.apache.spark.storage.StorageLevel):Dataset.this.type">persist(newLevel: org.apache.spark.storage.StorageLevel): Dataset.this.type</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#persist():Dataset.this.type">persist(): Dataset.this.type</a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Typed transformations<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#except(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">except(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#exceptAll(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">exceptAll(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#intersect(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">intersect(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#intersectAll(other:org.apache.spark.sql.Dataset[T]):org.apache.spark.sql.Dataset[T]">intersectAll(other: Dataset[T]): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#observe(name:String,expr:org.apache.spark.sql.Column,exprs:org.apache.spark.sql.Column*):org.apache.spark.sql.Dataset[T]">observe(name: String, expr: Column, exprs: Column*): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sample(withReplacement:Boolean,fraction:Double):org.apache.spark.sql.Dataset[T]">sample(withReplacement: Boolean, fraction: Double): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sample(withReplacement:Boolean,fraction:Double,seed:Long):org.apache.spark.sql.Dataset[T]">sample(withReplacement: Boolean, fraction: Double, seed: Long): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sample(fraction:Double):org.apache.spark.sql.Dataset[T]">sample(fraction: Double): Dataset[T]</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#sample(fraction:Double,seed:Long):org.apache.spark.sql.Dataset[T]">sample(fraction: Double, seed: Long): Dataset[T]</a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h4>Untyped transformations<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#crossJoin(right:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame">crossJoin(right: Dataset[_]): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#cube(col1:String,cols:String*):org.apache.spark.sql.RelationalGroupedDataset">cube(col1: String, cols: String*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#cube(cols:org.apache.spark.sql.Column*):org.apache.spark.sql.RelationalGroupedDataset">cube(cols: Column*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#rollup(col1:String,cols:String*):org.apache.spark.sql.RelationalGroupedDataset">rollup(col1: String, cols: String*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#rollup(cols:org.apache.spark.sql.Column*):org.apache.spark.sql.RelationalGroupedDataset">rollup(cols: Column*): RelationalGroupedDataset</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#explode[A,B](inputColumn:String,outputColumn:String)(f:A=%3ETraversableOnce[B])(implicitevidence$5:reflect.runtime.universe.TypeTag[B]):org.apache.spark.sql.DataFrame">explode[A, B](inputColumn: String, outputColumn: String)(f: A =&gt; TraversableOnce[B])(implicitevidence: reflect.runtime.universe.TypeTag[B]): DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/scala/org/apache/spark/sql/Dataset.html#explode[A%3C:Product](input:org.apache.spark.sql.Column*)(f:org.apache.spark.sql.Row=%3ETraversableOnce[A])(implicitevidence$4:reflect.runtime.universe.TypeTag[A]):org.apache.spark.sql.DataFrame">explode[A &lt;: Product](input: Column*)(f: Row =&gt; TraversableOnce[A])(implicitevidence: reflect.runtime.universe.TypeTag[A]): DataFrame</a></p></li>
+</ul>
+<p><cite>*</cite> Cross joins and full outer joins are not supported. Aggregations with more than one distinct aggregate expression are not supported.</p>
+</section>
+</section>
+</section>
+<section id="user-defined-functions-udfs">
+<span id="udfs"></span><h2>User-Defined Functions (UDFs)<a class="headerlink" href="#user-defined-functions-udfs" title="Permalink to this headline">¶</a></h2>
+<p>To run a Spark SQL UDF within Opaque enclaves, first name it explicitly and define it in Scala, then reimplement it in C++ against Opaque’s serialized row representation.</p>
+<p>For example, suppose we wish to implement a UDF called <code class="docutils literal notranslate"><span class="pre">dot</span></code>, which computes the dot product of two double arrays (<code class="docutils literal notranslate"><span class="pre">Array[Double]</span></code>). We [define it in Scala](src/main/scala/edu/berkeley/cs/rise/opaque/expressions/DotProduct.scala) in terms of the Breeze linear algebra library’s implementation. We can then use it in a DataFrame query, such as <a class="reference external" href="src/main/scala/edu/berkeley/cs/rise/opaque/benchmark/LogisticRegression.scala">logistic regression</a>.</p>
+<p>Now we can port this UDF to Opaque as follows:</p>
+<ol class="arabic">
+<li><p>Define a corresponding expression using Opaque’s expression serialization format by adding the following to [Expr.fbs](src/flatbuffers/Expr.fbs), which indicates that a DotProduct expression takes two inputs (the two double arrays):</p>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="n">DotProduct</span> <span class="p">{</span>
+  <span class="n">left</span><span class="o">:</span><span class="n">Expr</span><span class="p">;</span>
+  <span class="n">right</span><span class="o">:</span><span class="n">Expr</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the same file, add <code class="docutils literal notranslate"><span class="pre">DotProduct</span></code> to the list of expressions in <code class="docutils literal notranslate"><span class="pre">ExprUnion</span></code>.</p>
+</li>
+<li><p>Implement the serialization logic from the Scala <code class="docutils literal notranslate"><span class="pre">DotProduct</span></code> UDF to the Opaque expression that we just defined. In <code class="docutils literal notranslate"><span class="pre">Utils.flatbuffersSerializeExpression</span></code> (from <code class="docutils literal notranslate"><span class="pre">Utils.scala</span></code>), add a case for <code class="docutils literal notranslate"><span class="pre">DotProduct</span></code> as follows:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="p">(</span><span class="nc">DotProduct</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">),</span> <span class="nc">Seq</span><span class="p">(</span><span class="n">leftOffset</span><span class="p">,</span> <span class="n">rightOffset</span><span class="p">))</span> <span class="o">=&gt;</span>
+  <span class="n">tuix</span><span class="p">.</span><span class="nc">Expr</span><span class="p">.</span><span class="n">createExpr</span><span class="p">(</span>
+    <span class="n">builder</span><span class="p">,</span>
+    <span class="n">tuix</span><span class="p">.</span><span class="nc">ExprUnion</span><span class="p">.</span><span class="nc">DotProduct</span><span class="p">,</span>
+    <span class="n">tuix</span><span class="p">.</span><span class="nc">DotProduct</span><span class="p">.</span><span class="n">createDotProduct</span><span class="p">(</span>
+      <span class="n">builder</span><span class="p">,</span> <span class="n">leftOffset</span><span class="p">,</span> <span class="n">rightOffset</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finally, implement the UDF in C++. In <code class="docutils literal notranslate"><span class="pre">FlatbuffersExpressionEvaluator#eval_helper</span></code> (from <code class="docutils literal notranslate"><span class="pre">expression_evaluation.h</span></code>), add a case for <code class="docutils literal notranslate"><span class="pre">tuix::ExprUnion_DotProduct</span></code>. Within that case, cast the expression to a <code class="docutils literal notranslate"><span class="pre">tuix::DotProduct</span></code>, recursively evaluate the left and right children, perform the dot product computation on them, and construct a <code class="docutils literal notranslate"><span class="pre">DoubleField</span></code> containing the result.</p></li>
+</ol>
+</section>
+</section>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../benchmarking/benchmarking.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Benchmarking</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="usage.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Query submission via the Spark Driver</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, MC2 Contributors
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../../../_sources/opaque-sql-docs/src/usage/functionality.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Supported functionalities</a><ul>
+<li><a class="reference internal" href="#sql-interface">SQL interface</a><ul>
+<li><a class="reference internal" href="#data-types">Data types</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataframe-interface">DataFrame interface</a><ul>
+<li><a class="reference internal" href="#supported-operations">Supported operations</a><ul>
+<li><a class="reference internal" href="#actions">Actions</a></li>
+<li><a class="reference internal" href="#basic-dataset-functions">Basic Dataset functions</a></li>
+<li><a class="reference internal" href="#streaming">Streaming</a></li>
+<li><a class="reference internal" href="#typed-transformations">Typed transformations</a></li>
+<li><a class="reference internal" href="#untyped-transformations">Untyped transformations</a></li>
+<li><a class="reference internal" href="#ungrouped">Ungrouped</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unsupported-operations">Unsupported operations</a><ul>
+<li><a class="reference internal" href="#id1">Actions</a></li>
+<li><a class="reference internal" href="#id2">Basic Dataset Functions</a></li>
+<li><a class="reference internal" href="#id3">Typed transformations</a></li>
+<li><a class="reference internal" href="#id4">Untyped transformations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-defined-functions-udfs">User-Defined Functions (UDFs)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
