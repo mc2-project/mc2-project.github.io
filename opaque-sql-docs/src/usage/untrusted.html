@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Query submission via the Spark Driver" href="untrusted.html" /><link rel="prev" title="Installation" href="../install/install.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Usage" href="usage.html" /><link rel="prev" title="Query submission via the MC2 Client" href="client.html" />
 
     <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-3.0.3, furo 2021.06.18.beta36"/>
-        <title>Query submission via the MC2 Client - MC2 documentation</title>
+        <title>Query submission via the Spark Driver - MC2 documentation</title>
       <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
     <link rel="stylesheet" href="../../../_static/pygments.css">
     
@@ -142,8 +142,8 @@
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">Opaque SQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../install/install.html">Installation</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Query submission via the MC<sup>2</sup> Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="untrusted.html">Query submission via the Spark Driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html">Query submission via the MC<sup>2</sup> Client</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Query submission via the Spark Driver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionality.html">Supported functionalities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../benchmarking/benchmarking.html">Benchmarking</a></li>
@@ -167,55 +167,119 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <section id="query-submission-via-the-mc2-client">
-<h1>Query submission via the MC<sup>2</sup> Client<a class="headerlink" href="#query-submission-via-the-mc2-client" title="Permalink to this headline">¶</a></h1>
-<figure class="align-center" id="id1" style="width: 80%">
-<img alt="https://mc2-project.github.io/opaque-sql/opaque_diagram.png" src="https://mc2-project.github.io/opaque-sql/opaque_diagram.png"/>
-<figcaption>
-<p><span class="caption-text">Overview of Opaque SQL running with the MC<sup>2</sup> Client</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+        <section id="query-submission-via-the-spark-driver">
+<h1>Query submission via the Spark Driver<a class="headerlink" href="#query-submission-via-the-spark-driver" title="Permalink to this headline">¶</a></h1>
+<figure class="align-center" id="id1" style="width: 100%">
+<img alt="https://mc2-project.github.io/opaque-sql/opaque-diagram.svg" src="https://mc2-project.github.io/opaque-sql/opaque-diagram.svg"/><figcaption>
+<p><span class="caption-text">Overview of Opaque SQL running in insecure mode</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="starting-opaque-sql">
 <h2>Starting Opaque SQL<a class="headerlink" href="#starting-opaque-sql" title="Permalink to this headline">¶</a></h2>
-<p>Here we outline how to use <a class="reference external" href="https://github.com/mc2-project/mc2">the client</a> to submit queries. This is the primary method of running Opaque SQL and integrates with the rest of the MC<sup>2</sup> projects, such as <a class="reference external" href="https://github.com/mc2-project/secure-xgboost">Secure XGBoost</a>.</p>
+<p>This page goes through running Opaque SQL with the Spark driver located on the client.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Note that, by default, Opaque SQL uses a pre-generated RSA private key for enclave signing located at <code class="docutils literal notranslate"><span class="pre">${OPAQUE_HOME}/src/test/keys/mc2_test_key.pem</span></code>. This key <strong>should not</strong> be used in a production environment. This can be reconfigured by changing the environment variable <code class="docutils literal notranslate"><span class="pre">PRIVATE_KEY_PATH</span></code> to another key file and having the MC<sup>2</sup> Client use its public peer to verify the signature.</p>
+<p>This mode <strong>should not</strong> be used in any context where the full security of hardware enclaves is required. Remote attestation is disabled, and the Spark Driver has access to the key the worker enclaves use to encrypt/decrypt data. This is still offered to play around with the project and explore its API.</p>
+<p>This is Opaque SQL in <strong>insecure</strong> mode, and is normally only used for testing functionalities.</p>
 </div>
-<p>Running in this mode enables the driver to be located on <em>untrusted</em> hardware while still providing the complete security guarantees of the MC<sup>2</sup> platform.</p>
-<section id="starting-the-grpc-listeners">
-<h3>Starting the gRPC Listeners<a class="headerlink" href="#starting-the-grpc-listeners" title="Permalink to this headline">¶</a></h3>
-<p>Opaque SQL uses two listeners: the first for remote attestation on port 50051, and the second for query requests on port 50052. The MC<sup>2</sup> Client uses these by default to connect to the Opaque SQL driver.</p>
+<section id="running-the-interactive-shell">
+<h3>Running the interactive shell<a class="headerlink" href="#running-the-interactive-shell" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p>To run both listeners locally using <code class="docutils literal notranslate"><span class="pre">sbt</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build/sbt run
+<li><p>Package Opaque into a fat JAR. The reason we need a fat JAR is because the JAR produced by <code class="docutils literal notranslate"><span class="pre">build/sbt</span> <span class="pre">package</span></code> does not include gRPC dependencies needed for remote attestion.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">OPAQUE_HOME</span><span class="si">}</span>
+build/sbt test:assembly
 </pre></div>
 </div>
 </li>
-<li><p>To launch the listener on a standalone Spark cluster:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build/sbt assembly <span class="c1"># create a fat jar with all necessary dependencies</span>
-
-spark-submit --class edu.berkeley.cs.rise.opaque.rpc.Listener  <span class="se">\</span>
-   &lt;Spark configuration parameters&gt; <span class="se">\</span>
-   --deploy-mode client <span class="si">${</span><span class="nv">OPAQUE_HOME</span><span class="si">}</span>/target/scala-2.12/opaque-assembly-0.1.jar
+<li><p>Launch the Spark shell with Opaque.</p>
+<p>Scala:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spark-shell --jars <span class="si">${</span><span class="nv">OPAQUE_HOME</span><span class="si">}</span>/target/scala-2.12/opaque-assembly-0.1.jar
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pyspark --py-files <span class="si">${</span><span class="nv">OPAQUE_HOME</span><span class="si">}</span>/target/scala-2.12/opaque-assembly-0.1.jar  <span class="se">\</span>
+  --jars <span class="si">${</span><span class="nv">OPAQUE_HOME</span><span class="si">}</span>/target/scala-2.12/opaque-assembly-0.1.jar
+</pre></div>
+</div>
+<p>(we need to specify <cite>–py-files</cite> because the Python functions are placed in the .jar for easier packaging)</p>
+</li>
+<li><p>Alternatively, you can also run queries in Scala locally using <code class="docutils literal notranslate"><span class="pre">sbt</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build/sbt console
+</pre></div>
+</div>
+</li>
+<li><p>Inside the Spark shell, import Opaque SQL’s <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> methods and its query planning rules.</p>
+<p>Scala:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">edu</span><span class="p">.</span><span class="nn">berkeley</span><span class="p">.</span><span class="nn">cs</span><span class="p">.</span><span class="nn">rise</span><span class="p">.</span><span class="nn">opaque</span><span class="p">.</span><span class="nn">implicits</span><span class="p">.</span><span class="n">_</span>
+<span class="n">edu</span><span class="p">.</span><span class="n">berkeley</span><span class="p">.</span><span class="n">cs</span><span class="p">.</span><span class="n">rise</span><span class="p">.</span><span class="n">opaque</span><span class="p">.</span><span class="nc">Utils</span><span class="p">.</span><span class="n">initOpaqueSQL</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">testing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">opaque_sql</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">init_opaque_sql</span><span class="p">(</span><span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 </section>
-<section id="using-the-mc2-client">
-<h2>Using the MC<sup>2</sup> Client<a class="headerlink" href="#using-the-mc2-client" title="Permalink to this headline">¶</a></h2>
-<p>The MC<sup>2</sup> Client is a Python package that provides an integrated channel for communicating with other MC<sup>2</sup> compute services, including Opaque SQL. By following the <a class="reference external" href="https://mc2-project.github.io/mc2/install.html">install instructions</a> and specifying a user configuration, the client makes it possible to run Opaque SQL remotely and receive results locally.</p>
-<ol class="arabic simple">
-<li><p>For an explanation of the user configuration and to see an example, see the <a class="reference external" href="https://mc2-project.github.io/mc2/config/config.html">configuration documentation</a>.</p></li>
-<li><p>For concrete instructions on how to run Opaque SQL with the client, see the <a class="reference external" href="https://mc2-project.github.io/mc2/opaquesql_usage.html">usage with Opaque SQL documentation</a>.</p></li>
-<li><p>(Optional) The MC<sup>2</sup> Client also contains tools to aid in setting up a production environment, like an <a class="reference external" href="https://mc2-project.github.io/mc2/config/azure.html">Azure configuration</a> for starting a cluster through a <a class="reference external" href="https://mc2-project.github.io/mc2/python/usage.html#azure-resource-management">simple API</a>.</p></li>
+<section id="encrypting-a-dataframe-with-the-driver">
+<h2>Encrypting a DataFrame with the Driver<a class="headerlink" href="#encrypting-a-dataframe-with-the-driver" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The methods shown in this section are <em>only</em> supported in insecure mode.</p>
+</div>
+<ol class="arabic">
+<li><p>Create an unencrypted DataFrame.</p>
+<p>Scala:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="n">data</span> <span class="o">=</span> <span class="nc">Seq</span><span class="p">((</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s">"bar"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"baz"</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="kd">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"word"</span><span class="p">,</span> <span class="s">"count"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s2">"bar"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">"baz"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">"word"</span><span class="p">,</span> <span class="s2">"count"</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create an encrypted DataFrame from the unencrypted version. In insecure mode, this is as easy as calling <code class="docutils literal notranslate"><span class="pre">.encrypted</span></code>.</p>
+<p>Scala:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="n">dfEncrypted</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">encrypted</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_encrypted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">encrypted</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Perform any operations in the <a class="reference internal" href="functionality.html#functionalities"><span class="std std-ref">list of supported functionalities</span></a>.</p></li>
 </ol>
-<p>Alternatively, we offer a quickstart for running everything seamlessly in a Docker container with all dependencies installed. For a comprehensive walkthrough, see the <a class="reference external" href="https://mc2-project.github.io/mc2/quickstart.html">quickstart documentation</a>.</p>
-<p>For further reading:</p>
-<p><a class="reference external" href="https://github.com/mc2-project/mc2">Client Source Code</a></p>
-<p><a class="reference external" href="https://mc2-project.github.io/mc2/index.html">Client Documentation</a></p>
+<ol class="arabic" start="3">
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">.collect</span></code> or <code class="docutils literal notranslate"><span class="pre">.show</span></code> to retreive and automatically decrypt the results.</p>
+<p>Scala:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">dfEncrypted</span><span class="p">.</span><span class="n">show</span>
+<span class="c1">// +-----+-----+</span>
+<span class="c1">// |word |count|</span>
+<span class="c1">// +--99-+-----+</span>
+<span class="c1">// |  foo|    4|</span>
+<span class="c1">// |  bar|    1|</span>
+<span class="c1">// |  baz|    5|</span>
+<span class="c1">// +-----+-----+</span>
+</pre></div>
+</div>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_encrypted</span><span class="o">.</span><span class="n">show</span>
+<span class="c1"># +-----+-----+</span>
+<span class="c1"># |word |count|</span>
+<span class="c1"># +--99-+-----+</span>
+<span class="c1"># |  foo|    4|</span>
+<span class="c1"># |  bar|    1|</span>
+<span class="c1"># |  baz|    5|</span>
+<span class="c1"># +-----+-----+</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 </section>
 
@@ -223,23 +287,23 @@ spark-submit --class edu.berkeley.cs.rise.opaque.rpc.Listener  <span class="se">
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="untrusted.html">
+          <a class="next-page" href="usage.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Query submission via the Spark Driver</div>
+                <div class="title">Usage</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../install/install.html">
+          <a class="prev-page" href="client.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Installation</div>
+                <div class="title">Query submission via the MC<sup>2</sup> Client</div>
                 
               </div>
             </a>
@@ -253,7 +317,7 @@ spark-submit --class edu.berkeley.cs.rise.opaque.rpc.Listener  <span class="se">
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="../../../_sources/opaque-sql-docs/src/usage/client.rst.txt"
+            <a class="muted-link" href="../../../_sources/opaque-sql-docs/src/usage/untrusted.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -273,12 +337,12 @@ spark-submit --class edu.berkeley.cs.rise.opaque.rpc.Listener  <span class="se">
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Query submission via the MC<sup>2</sup> Client</a><ul>
+<li><a class="reference internal" href="#">Query submission via the Spark Driver</a><ul>
 <li><a class="reference internal" href="#starting-opaque-sql">Starting Opaque SQL</a><ul>
-<li><a class="reference internal" href="#starting-the-grpc-listeners">Starting the gRPC Listeners</a></li>
+<li><a class="reference internal" href="#running-the-interactive-shell">Running the interactive shell</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-the-mc2-client">Using the MC<sup>2</sup> Client</a></li>
+<li><a class="reference internal" href="#encrypting-a-dataframe-with-the-driver">Encrypting a DataFrame with the Driver</a></li>
 </ul>
 </li>
 </ul>
