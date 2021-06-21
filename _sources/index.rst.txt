@@ -68,5 +68,6 @@ Resources
 .. toctree::
     :maxdepth: 2
 
+    About <self>
     documentation
     GitHub <https://github.com/mc2-project/mc2>
