@@ -11,6 +11,14 @@
 A Platform for Secure Analytics and Machine Learning
 ****************************************************
 
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    About <self>
+    documentation
+    GitHub <https://github.com/mc2-project/mc2>
+
 Introduction to MC\ :sup:`2`
 ============================
 
@@ -62,12 +70,11 @@ The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secur
       :figwidth: 85 %
       :align: center
 
-Resources
-=========
 
-.. toctree::
-    :maxdepth: 2
+Getting Involved
+================
+In addition to building out the MC\ :sup:`2` platform, we're continuing to grow the MC\ :sup:`2` community. Here are some ways to get involved in the MC\ :sup:`2` community:
 
-    About <self>
-    documentation
-    GitHub <https://github.com/mc2-project/mc2>
+* Join our `community Slack <https://join.slack.com/t/mc2-project/shared_invite/zt-rt3kxyy8-GS4KA0A351Ysv~GKwy8NEQ>`_
+* Star and follow us on `GitHub <https://github.com/mc2-project/mc2>`_
+* Email us at mc2-dev@googlegroups.com
