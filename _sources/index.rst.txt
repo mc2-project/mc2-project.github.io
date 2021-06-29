@@ -15,9 +15,10 @@ A Platform for Secure Analytics and Machine Learning
     :maxdepth: 2
     :hidden:
 
-    About <self>
+    What is MC²? <self>
     documentation
     GitHub <https://github.com/mc2-project/mc2>
+    resources
 
 Introduction to MC\ :sup:`2`
 ============================
