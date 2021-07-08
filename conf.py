@@ -41,6 +41,8 @@ extensions = [
     "sphinxarg.ext",
     "sphinx_copybutton",
     "sphinxcontrib.spelling",
+    'sphinx-prompt',
+    'sphinx_substitution_extensions'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -88,3 +90,9 @@ spelling_word_list_filename = "spelling_wordlist.txt"
 
 # Emit misspelling as Sphinx warning
 spelling_warning = True
+
+# Substitutions
+rst_prolog = """
+.. |research| replace:: CHESTER
+.. |author| replace:: Eleanor
+"""
