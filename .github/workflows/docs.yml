@@ -30,7 +30,8 @@ jobs:
    
       - name: Install dependencies
         run: |
-          pip install furo sphinx==3.0.3 sphinx-argparse sphinx-copybutton sphinx-multibuild sphinxcontrib-spelling
+          cd main
+          pip install -r requirements.txt
 
       - name: Checkout mc2 client
         uses: actions/checkout@v2

@@ -1,6 +1,8 @@
+furo
 setuptools
 sphinx==3.0.3
 sphinx-argparse
 sphinx-copybutton
 sphinx-multibuild
 sphinxcontrib-spelling
+Sphinx-Substitution-Extensions

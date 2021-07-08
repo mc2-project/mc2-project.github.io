@@ -41,8 +41,8 @@ extensions = [
     "sphinxarg.ext",
     "sphinx_copybutton",
     "sphinxcontrib.spelling",
-    'sphinx-prompt',
-    'sphinx_substitution_extensions'
+    "sphinx-prompt",
+    "sphinx_substitution_extensions"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -91,8 +91,13 @@ spelling_word_list_filename = "spelling_wordlist.txt"
 # Emit misspelling as Sphinx warning
 spelling_warning = True
 
-# Substitutions
+# -------- Substitutions ----------------------------
 rst_prolog = """
-.. |research| replace:: CHESTER
-.. |author| replace:: Eleanor
+.. |platform| replace:: MC\ :sup:`2`
+.. |platform_uppercase| replace:: MC2
+.. |github-org| replace:: mc2-project
+.. |github-repo| replace:: mc2
+.. |cmd| replace:: mc2
+.. |python-package| replace:: mc2client
+.. |python-package-short| replace:: mc2
 """
