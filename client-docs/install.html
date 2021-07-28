@@ -191,7 +191,7 @@
  docker build -t mc2_img .
 
  <span class="c1"># Alternatively, pull a pre-built image (~3 GB)</span>
- <span class="c1"># docker pull |docker-org|/mc2_img:v|release_version|</span>
+ <span class="c1"># docker pull mc2project/mc2_img:v0.1.3</span>
 
  <span class="c1"># Run the container, mounting your playground to the container, and open a shell into the container</span>
  docker run -it -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/playground:/mc2/client/playground mc2_img /bin/bash
