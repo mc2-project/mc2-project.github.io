@@ -1,4 +1,7 @@
-# Documentation Development
+# MC<sup>2</sup> Website
+This site is automatically rebuilt upon pushes to master in this repo, and also to pushes to master at the client and Opaque SQL.
+
+## Documentation Development
 
 To build the documentation locally, install the `sphinx` and `sphinx-argparse` Python packages, then build the documentation from this directory.
 
