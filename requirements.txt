@@ -1,6 +1,6 @@
 furo
 setuptools
-sphinx==3.0.3
+sphinx
 sphinx-argparse
 sphinx-copybutton
 sphinx-multibuild
