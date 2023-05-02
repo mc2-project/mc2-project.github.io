@@ -51,9 +51,9 @@ MC\ :sup:`2` platform's workflow
 
 The MC\ :sup:`2` platform builds upon the `Open Enclave SDK <https://openenclave.io/sdk/>`_, an open source SDK that provides a single unified abstraction across different enclave technologies. The use of Open Enclave enables our library to be compatible with many different enclave backends, including Intel SGX.
 
-The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secure data processing in a cloud. Green indicates a trusted component, while read indicates an untrusted component that could be compromised by an adversary.
+The diagrams below show a sample workflow of a user using MC\ :sup:`2` for secure data processing in a cloud. Green indicates a trusted component, while red indicates an untrusted component that could be compromised by an adversary.
 
-1. Before any query can be exeucuted, the user must execute remote attestation to load MC\ :sup:`2` compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC\ :sup:`2` client.
+1. Before any query can be executed, the user must execute remote attestation to load MC\ :sup:`2` compute service into enclaves and transfers their private keys to our service. This can be done by initializing with the MC\ :sup:`2` client.
 
    .. figure:: images/mc2_workflow/mc2_workflow1.jpg
       :figwidth: 85 %
